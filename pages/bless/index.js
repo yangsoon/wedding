@@ -14,56 +14,65 @@ Page({
       loading: false
     },
     bindgetuserinfo (e) {
-      console.log(e.detail.userInfo);
-      this.loading = true
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'get_openId'
-      })
-        .then(async res => {
-          console.log(res.result)
-          const obj = {
-            nickName: e.detail.userInfo.nickName,
-            avatarUrl: e.detail.userInfo.avatarUrl,
-            openId: res.result.openid
-          }
-          // 查询数据库
-          const status = await app.globalData.db.collection('bless').where({ openId: res.result.openid }).get()
-          if (!status.data.length) {
-            // 没有祝福过
-            app.globalData.db.collection('bless').add({
-              data: obj
-            })
-              .then(async res => {
-                console.log(res);
+      let userInfo;
+      wx.getUserProfile({
+        desc: '用于显示个人头像',
+        success: (res) => {
+          this.loading = true
+          userInfo = res.userInfo;
+          wx.cloud.callFunction({
+            // 云函数名称
+            name: 'get_openId'
+          })
+            .then(async res => {
+              console.log(res.result)
+              const obj = {
+                nickName: userInfo.nickName,
+                avatarUrl: userInfo.avatarUrl,
+                openId: res.result.openid
+              }
+              // 查询数据库
+              const status = await app.globalData.db.collection('bless').where({ openId: res.result.openid }).get()
+              if (!status.data.length) {
+                // 没有祝福过
+                app.globalData.db.collection('bless').add({
+                  data: obj
+                })
+                  .then(async res => {
+                    console.log(res);
+                    wx.showToast({
+                      title: '谢谢您的祝福',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                    await this.getBless()
+                    this.loading = false
+                    this.setData({
+                      isBless: true
+                    })
+                  })
+                  .catch(err => {
+                    console.log(err);
+                    this.loading = false    
+                  })
+              } else {
+                this.setData({
+                  isBless: true
+                })
                 wx.showToast({
-                  title: '谢谢你的祝福',
+                  title: '您已经祝福过了',
                   icon: 'none',
                   duration: 2000
                 })
-                await this.getBless()
-                this.loading = false
-              })
-              .catch(err => {
-                console.log(err);
-                this.loading = false    
-              })
-          } else {
-            this.setData({
-              isBless: true
+                this.loading = false          
+              }
             })
-            wx.showToast({
-              title: '您已经祝福过了',
-              icon: 'none',
-              duration: 2000
+            .catch(err => {
+              console.log(err);
+              this.loading = false
             })
-            this.loading = false          
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          this.loading = false
-        })
+        }
+      })
     },
     async getBless () {
       const mainInfo = await app.globalData.db.collection('bless')

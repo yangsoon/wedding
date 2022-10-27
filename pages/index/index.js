@@ -12,17 +12,17 @@ Page({
     animationData: "",
     mainInfo: {
       // 下面配置项依此为 首页背景图 新郎名字 新娘名字 公历时间 农历时间 酒店名字 酒店地址
-      image: '',
-      boy: '孙伟祥',
-      girl: '孙明明',
-      date: '10月16日',
-      lunar: '九月廿一',
-      hotel: '山东大厦·清照酒店',
-      address: '山东省济南市章丘区清照酒店',
-      autoPlay: '',
-      music: ''
+      image: 'https://yangsoon-photo.oss-cn-hangzhou.aliyuncs.com/green.jpg',
+      boy: '宋阳',
+      girl: '刘鑫',
+      date: '2022年10月6日',
+      lunar: '壬寅年九月十一',
+      hotel: '宴江南大酒店',
+      address: '枣庄市薛城区宴江南大酒店(银座店)',
+      autoPlay: true,
+      music: 'https://6c69-liuxin-9g2szahi4d8bf88f-1314007364.tcb.qcloud.la/musics/1-01%20Beautiful%20Girl.mp3?sign=210fcd094d10e70af714426c34759df1&t=1663591734'
     },
-    musicStatus: false
+    musicStatus: true
   },
 
   /**
@@ -59,11 +59,19 @@ Page({
     this.setData({
       animationData: animation.export(),
     })
+  },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
     // 播放背景音乐
+    console.log(this.data.mainInfo.autoPlay)
     if (this.data.mainInfo.autoPlay) {
+      console.log("自动播放")
       wx.playBackgroundAudio({
-        dataUrl: this.data.mainInfo.music
+        dataUrl: this.data.mainInfo.music,
+        title: "Beautiful Girls"
       })
       this.setData({
         musicStatus: true
@@ -73,13 +81,6 @@ Page({
         musicStatus: false
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -121,7 +122,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    app.shareHandle();
+    return {
+      title: "宋阳&刘鑫的婚礼邀请函",
+    }
+  },
+
+  onShareTimeline: function() {
+    return {
+      title: "宋阳&刘鑫的婚礼邀请函",
+    }
   },
   play: function (event) {
     if (this.data.musicStatus) {
@@ -131,7 +140,8 @@ Page({
       })
     } else {
       wx.playBackgroundAudio({
-        dataUrl: this.data.mainInfo.music
+        dataUrl: this.data.mainInfo.music,
+        title: "Beautiful Girls"
       })
       this.setData({
         musicStatus: true

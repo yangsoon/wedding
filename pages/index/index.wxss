@@ -11,12 +11,13 @@
     height: 100vh;
 }
 .inv {
-    width: 572rpx;
-    height: 69rpx;
+    width: 500rpx;
+    height: 50rpx;
     position: fixed;
-    top: 30rpx;
-    left: 89rpx;
-    z-index: 99
+    top: 100rpx;
+    left: 100rpx;
+    z-index: 99;
+    opacity: 0.7;
 }
 .datetime {
     position: fixed;
@@ -24,12 +25,12 @@
     width: 620rpx;
     padding: 15rpx;
     left: 50rpx;
-    background-color: rgba(255, 255, 255, .8)
+    background-color: rgba(168, 165, 165, 0.5)
 }
 .box {
     padding: 30rpx 0;
     position: relative;
-    border: 4rpx solid rgba(0, 0, 0, .8);
+    /* border: 4rpx solid rgba(0, 0, 0, .8); */
 }
 .we {
     position: absolute;
@@ -43,6 +44,7 @@
     font-size: 30rpx;
     line-height: 50rpx;
     margin-top: 20rpx;
+
 }
 
 .name {
@@ -93,8 +95,8 @@
 
 .background_music{
   position: fixed;
-  top: 20rpx;
-  right: 0;
+  top: 300rpx;
+  left: 0;
   z-index: 10001;
   width: 100rpx;
 }

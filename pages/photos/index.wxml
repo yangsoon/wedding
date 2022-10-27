@@ -1,6 +1,10 @@
 <view class="container">
   <view class="swiper">
-    <swiper indicator-dots="false" autoplay="false" interval="5000" duration="1000">
+    <swiper indicator-dots="true" autoplay="false" 
+    interval="5000"  duration="1000" vertical="true"
+    circular="true"  easing-function="linear"
+    indicator-color="#000000"
+    indicator-active-color="#ffffff">
         <swiper-item wx:for="{{slideList}}" wx:key="{{index}}">
             <image src="{{item}}" class="slide-image" mode="aspectFill"/>
         </swiper-item>

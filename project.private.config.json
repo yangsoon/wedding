@@ -3,5 +3,6 @@
   "projectname": "Wedding-invitation",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "2.26.0"
 }

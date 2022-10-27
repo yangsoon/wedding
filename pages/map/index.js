@@ -9,16 +9,20 @@ Page({
    */
   data: {
     mainInfo: {
-      longitude: 117.50330088495255,
-      latitude : 36.67245784080296
+      longitude: 117.269564,
+      latitude : 34.799068,
+      boyPhone: '13260365035',
+      girlPhone: '18660346853',
+      boy: '宋阳',
+      girl: '刘鑫'
     },
     markers: [
       {
         id: 1,
         // 酒店经纬度
-        longitude: 117.50315604566575,
-        latitude : 36.672092118908026,
-        iconPath: "../../images/3-1.png",
+        longitude: 117.269564,
+        latitude : 34.799068,
+        iconPath: "../../images/church.png",
         width: 50,
         height: 50
       }
@@ -32,8 +36,8 @@ Page({
       longitude: _this.data.mainInfo.longitude,
       scale: 18,
       // 酒店名字和位置
-      name: '清照酒店',
-      address: '济南市章丘区经十路'
+      name: '宴江南(银座店)',
+      address: '枣庄市薛城区黄河中路177号'
     })
   },
   /**

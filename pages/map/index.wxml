@@ -8,17 +8,16 @@
   <view class="tel">
     <view class="tel_he" wx:if="{{mainInfo.boyPhone}}">
       <view class="call" bindtap="callhe">
-        <image src="/images/he.png" width="100%" />
+        <image src="/images/grrom.png" width="100%" />
       </view>
-      呼叫新郎
+      联系新郎
     </view>
     <view class="tel_she" wx:if="{{mainInfo.girlPhone}}">
       <view class="call" bindtap="callshe">
-        <image src="/images/she.png" width="100%" />
+        <image src="/images/bride.png" width="100%" />
       </view>
-      呼叫新娘
+      联系新娘
     </view>
   </view>
-  <view class='copyright' wx:if="{{mainInfo.girlPhone}}">MADE WITH ❤ BY  {{mainInfo.boy}} & {{mainInfo.girl}}</view>
-  <!-- <view class='copyright'>©2020 https://blog.wangyu.link</view> -->
+  <view class='copyright' >{{mainInfo.boy}} {{mainInfo.girl}} 用 ❤ 呈现</view>
 </view>

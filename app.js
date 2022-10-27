@@ -2,7 +2,7 @@ App({
   onLaunch (options) {
     // 初始化数据库
     wx.cloud.init({
-      env: 'cloud1-7gqq99np59df2630'
+      env: 'liuxin-9g2szahi4d8bf88f'
     })
     const db = wx.cloud.database()
     this.globalData.db = db

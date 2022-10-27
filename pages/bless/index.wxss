@@ -4,6 +4,42 @@
   font-size: 30rpx;
   line-height: 60rpx;
 }
+.button{
+  /* background-color: #F4473C;
+  color: #ffff; */
+  width: 400rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  color: #000000;
+  border-radius: 0rpx;
+  display: flex;
+  flex-direction: raw;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.gifs {
+  display: flex;
+  flex-direction: raw;
+  align-items: center;
+  justify-content: center;
+}
+
+.gif {
+  width: 70rpx;
+  height: 70rpx;
+  margin: auto;
+  float: left;
+}
+
+.static{
+  width: 60rpx;
+  height: 60rpx;
+  margin: auto;
+  float: left;
+}
+
 .friends {
   min-height: 0;
   overflow: hidden;
@@ -37,11 +73,11 @@
 .bless_img {
   width: 400rpx;
   height: 300rpx;
-  margin: 0 auto;
+  margin: 0 25% 0 15%;
 }
 
 .bless_img image{
-  width: 400rpx;
+  width: 475rpx;
   height: 300rpx;
 }
 .tips {

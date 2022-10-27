@@ -16,7 +16,7 @@
     </view>
     <view wx:else>
         <view class="befirst">
-            <image src="https://wong-1251253615.cos.ap-shanghai.myqcloud.com/lovemail.gif" />
+            <image src="https://yangsoon-photo.oss-cn-hangzhou.aliyuncs.com/green.jpg" />
         </view>
     </view>
     <view class="send_msg">

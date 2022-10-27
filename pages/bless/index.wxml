@@ -1,19 +1,26 @@
-<!--pages/bless/index.wxml-->
-<view class="container">
+<view class="bless-container">
   <view class="bless_img">
-    <image src="/images/mail.png"/>
+    <image src="/images/c.png"/>
   </view>
-  <view class="title" wx:if="{{zanNum > 0}}">已收到 {{zanNum}} 位好友的祝福</view>
-  <view class="title" wx:if="{{zanNum == 0}}"> 点击下方按钮可送上祝福 </view>
+  <view class="title" wx:if="{{zanNum > 0}}">已经收到来自 {{zanNum}} 位好友的祝福</view>
+
+  <view class="title" wx:if="{{zanNum == 0 || !isBless}}"> 点击下方按钮可送上祝福 </view>
+  <view class="title" wx:else> 感谢您的祝福 </view>
+
   <view class="friends">
     <view class="face" wx:for="{{zanLog}}" wx:key="user">
       <image src="{{item.avatarUrl}}" />
     </view>
     <view class="face">
-      <image src="../../images/more.svg" bindtap="getBless"></image>
+      <image src="../../images/more.png" bindtap="getBless"></image>
     </view>
   </view>
   <view class="btn_zone">
-    <button type="warn" disabled="{{isBless}}" loading="{{loading}}" open-type="getUserInfo"  bindgetuserinfo="bindgetuserinfo">{{ isBless ? '已祝福' : '送上祝福' }}</button>  
+    <button class="button" disabled="{{isBless}}" loading="{{loading}}" bindtap="bindgetuserinfo">
+    <image class="{{isBless? 'gif': 'static'}}" src="{{isBless? '../../images/heart-gif.gif':'../../images/heart.png'}}"></image>
+    <image class="{{isBless? 'gif': 'static'}}" src="{{isBless? '../../images/star-gif.gif':'../../images/star.png'}}"></image>
+    <image class="{{isBless? 'gif': 'static'}}" src="{{isBless? '../../images/coin-gif.gif':'../../images/coin.png'}}"></image>
+    {{ isBless ? '已三连' : '一键三连' }}
+    </button>  
   </view>
 </view>
